@@ -169,14 +169,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void generateNewNumber() {
-        for(int i = 0;i<4;i++) {
-            for(int j = 0;j<4;j++) {
-                if(board[i][j].getText().equals("")) {
-                    blankTextView.add(board[i][j]);
-                }
-            }
-        }
-        int blankTextViewLength = blankTextView.size();
+
+        int blankTextViewLength = getBlankTextViewSize();
         if(blankTextViewLength == 0) {
             over = true;
             gameover.setText("GAME OVER!!!");
@@ -186,6 +180,24 @@ public class MainActivity extends AppCompatActivity {
         int getInitialBoardIndex = getInitialBoardIndex(blankTextViewLength);
 
         blankTextView.get(getInitialBoardIndex).setText(String.valueOf(getInitialNumber2or4));
+    }
+
+    public boolean isGameOver() {
+        return getBlankTextViewSize() == 0 ? true : false;
+    }
+
+    public int getBlankTextViewSize() {
+        int length = 0;
+        for(int i = 0;i<4;i++) {
+            for(int j = 0;j<4;j++) {
+                if(board[i][j].getText().equals("")) {
+                    blankTextView.add(board[i][j]);
+                    length++;
+                }
+            }
+        }
+
+        return length;
     }
 
 
@@ -425,7 +437,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 i++;
             }
-
+            if(!swapped) {
+                if (isGameOver()) {
+                    over = true;
+                    gameover.setText("GAME OVER!!!");
+                }
+            }
             return swapped;
         }
 
