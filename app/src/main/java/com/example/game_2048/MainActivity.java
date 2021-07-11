@@ -303,9 +303,7 @@ public class MainActivity extends AppCompatActivity {
             _i = 0;
             _j = 0;
             boolean swapped = swipeLURD(tempBoard);
-            if(!swapped){
-                generateNewNumber();
-                return;}
+            if(!swapped) return;
 
             for(int i = 0;i < 4; i++) {
                 _j = 0;
@@ -331,9 +329,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             boolean swapped = swipeLURD(tempBoard);
-            if(!swapped) {
-                generateNewNumber();
-                return;}
+            if(!swapped) return;
 
             for(int i = 0;i < 4; i++) {
                 for(int j = 0;j < 4; j++) {
@@ -362,9 +358,7 @@ public class MainActivity extends AppCompatActivity {
             _i = 0;
             _j = 0;
             boolean swapped = swipeLURD(tempBoard);
-            if(!swapped) {
-                generateNewNumber();
-                return;}
+            if(!swapped) return;
             for(int i = 0;i < 4; i++) {
                 _j = 0;
                 for(int j = 3;j >= 0; j--) {
